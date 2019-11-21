@@ -1,13 +1,12 @@
 import React from 'react';
-import Home from './Home';
-import Today from './Today';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import User from './User';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 const Main = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path='/' component={Home} />
-      <Route path='/today' component={Today} />
+      <Redirect exact from='/' to='/user' />
+      <Route path='/user' component={User} />
     </Switch>
   </BrowserRouter>
 );
