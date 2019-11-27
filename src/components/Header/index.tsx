@@ -5,11 +5,11 @@ import './Header.scss';
 const Header = () => {
   return (
     <div className='header'>
-      <Link to='/'>
-        <div className='go-home'>
-          (홈으로)
-        </div>
-      </Link>
+      <div className='go-home'>
+        <Link to='/'>
+        (홈으로)
+        </Link>
+      </div>
       <div className='profile'>
         프로필예정
       </div>
