@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import * as firebase from 'firebase/app';
+import 'firebase/database';
 import './Today.scss';
 
 const Today = () => {
+  const breakfast = firebase.database().ref('/');
+  console.log(breakfast);
+  breakfast.on('value', data => console.log(data.val()));
+
   return (
     <div className='today'>
       <div className='today-menu'>

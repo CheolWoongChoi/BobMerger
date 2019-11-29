@@ -25,3 +25,5 @@ yarn-error.log*
 # etc
 .gitignore
 yarn.lock
+/src/config
+.firebaserc

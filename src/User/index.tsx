@@ -6,16 +6,18 @@ import Error404 from './Error404';
 import Header from '../components/Header';
 import { Switch, Route, RouteComponentProps } from 'react-router-dom';
 
-const User = ({ match }: RouteComponentProps) => (
-  <>
-    <Header />
-    <Switch>
-      <Route path={`${match.url}/today`} component={Today} />
-      <Route path={`${match.url}/lastWeek`} component={LastWeek} />
-      <Route path={match.url} component={Home} />
-      <Route component={Error404} />
-    </Switch>
-  </>
-);
+const User = ({ match }: RouteComponentProps) => {
+  return (
+    <>
+      <Header />
+      <Switch>
+        <Route path={`${match.url}/today`} component={Today} />
+        <Route path={`${match.url}/lastWeek`} component={LastWeek} />
+        <Route path={match.url} component={Home} />
+        <Route component={Error404} />
+      </Switch>
+    </>
+  )
+};
 
 export default User;
