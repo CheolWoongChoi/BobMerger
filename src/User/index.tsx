@@ -11,9 +11,9 @@ const User = ({ match }: RouteComponentProps) => {
     <>
       <Header />
       <Switch>
+        <Route exact path={match.url} component={Home} />
         <Route path={`${match.url}/today`} component={Today} />
         <Route path={`${match.url}/lastWeek`} component={LastWeek} />
-        <Route path={match.url} component={Home} />
         <Route component={Error404} />
       </Switch>
     </>

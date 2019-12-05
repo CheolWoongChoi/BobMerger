@@ -6,7 +6,7 @@ import './Home.scss';
 const Home = ({ match }: RouteComponentProps) => {
   return (
     <div className='home'>
-      <input className='searcher' placeholder='뭐 먹을래??? (검색엔진 나올 예정)' />
+      {/* <input className='searcher' placeholder='뭐 먹을래??? (검색엔진 나올 예정)' /> */}
       <Link to={`${match.url}/today`}>
         <div className='today-food'>오늘 먹은 음식 넣기</div>
       </Link>
