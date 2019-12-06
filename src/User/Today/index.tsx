@@ -5,7 +5,10 @@ import currDate from '../../util/currDate';
 import './Today.scss';
 
 const Today = () => {
-  const breakfastRef = firebase.database().ref('/user/bluesky4381/date');
+  const fbDbRef = firebase.database();
+  const todayRefLink = `/user/bluesky4381/date/${currDate('YYMMDD')}`;
+  const todayRef = fbDbRef.ref(todayRefLink);
+
   const [breakfast, setBreakfast] = useState({
     menu: '',
     restaurant: ''
@@ -21,12 +24,31 @@ const Today = () => {
 
   useEffect(() => {
     // 데이터 초기화
-    breakfastRef.once('value').then(data => { 
-      const { breakfast, lunch, dinner } = data.val();
-      
-      setBreakfast(breakfast);
-      setLunch(lunch);
-      setDinner(dinner);
+    todayRef.once('value').then(data => { 
+      try {
+        const { breakfast, lunch, dinner } = data.val();
+        
+        setBreakfast(breakfast);
+        setLunch(lunch);
+        setDinner(dinner);
+      } catch(e) {
+        console.log(e);
+
+        todayRef.set({
+          breakfast: {
+            menu: '',
+            restaurant: ''
+          },
+          lunch: {
+            menu: '',
+            restaurant: ''
+          },
+          dinner: {
+            menu: '',
+            restaurant: ''
+          }
+        });
+      }
     });
   }, []);
 
@@ -51,18 +73,23 @@ const Today = () => {
     });
   };
 
+  const handleSave = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    todayRef.set({ breakfast, lunch, dinner });
+    alert('저장되었습니다.');
+  };
+
   return (
     <div className='today'>
       <div className='today-menu'>
         <div className="save-btn">
-          <button>저장하기</button>
+          <button onClick={handleSave}>저장하기</button>
         </div>
         <div className='today-header'>
           <p>
             {}
           </p>
           <p className='date'>
-            {`${new Date().getMonth() + 1}-${new Date().getUTCDate()}`}
+            {currDate('YY-MM-DD')}
           </p>
         </div>
         <div className='head menu-layout'>

@@ -1,5 +1,5 @@
 import moment from 'moment';
 
-export default function (): string {
-  return moment().format('YYMMDD');
+export default function (format: string): string {
+  return moment().format(format);
 };
