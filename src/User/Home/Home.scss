@@ -22,7 +22,6 @@
     transform: translateX(-50%);
     font-size: 25px;
     color: goldenrod;
-    cursor: pointer;
   }
 
   .last-week-food {
@@ -32,6 +31,14 @@
     transform: translateX(-50%);
     font-size: 25px;
     color: pink;
-    cursor: pointer;
+  }
+
+  .month-food {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    color: skyblue;
   }
 }

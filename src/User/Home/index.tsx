@@ -13,6 +13,9 @@ const Home = ({ match }: RouteComponentProps) => {
       <Link to={`${match.url}/lastWeek`}>
         <div className='last-week-food'>지난 주 먹었던 음식</div>
       </Link>
+      <Link to={`${match.url}/month`}>
+        <div className='month-food'>이번 달 먹었던 음식</div>
+      </Link>
     </div>
   );
 } 
